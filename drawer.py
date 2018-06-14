@@ -31,12 +31,11 @@ def draw(Figures,Screen,Palette,save_png):
         if figure_type == "point":
             screen.set_at([figure["x"], figure["y"]], convert_color(figure_color,Palette))
         elif figure_type == "circle":
-            pygame.draw.circle(screen, convert_color(figure_color,Palette), [figure["x"], figure["y"]], fig["radius"])
+            pygame.draw.circle(screen, convert_color(figure_color,Palette), [figure["x"], figure["y"]], figure["radius"])
         elif figure_type == "polygon":
             pygame.draw.polygon(screen, convert_color(figure_color,Palette), figure["points"])
         elif figure_type == "square":
-            if "size" in list(figure.keys()): length = figure["size"]
-            elif "radius" in list(figure.keys()): length = figure["radius"]/(sqrt(2))
+            length = figure["size"]
             left = figure["x"] - (length/2)
             top = figure["y"] - (length/2)
             pygame.draw.rect(screen, convert_color(figure_color,Palette), pygame.Rect(left, top, length, length))
